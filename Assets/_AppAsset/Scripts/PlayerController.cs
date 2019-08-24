@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
-
-// Include the namespace required to use Unity UI
-using UnityEngine.UI;
-
 using System.Collections;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
 
     // Create public variables for player speed, and for the Text UI game objects
     public float speed;
-    public Text countText;
-    public Text winText;
+    public TextMeshProUGUI countText;
+    public TextMeshProUGUI winText;
 
     // Create private references to the rigidbody component on the player, and the count of pick up objects picked up so far
     private Rigidbody rb;
