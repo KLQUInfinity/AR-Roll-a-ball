@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     // Create private references to the rigidbody component on the player, and the count of pick up objects picked up so far
     private Rigidbody rb;
     private int count;
+    private Vector2 touchStart, touchEnd;
 
     // At the start of the game..
     void Start()
@@ -33,16 +34,14 @@ public class PlayerController : MonoBehaviour
     // Each physics step..
     void FixedUpdate()
     {
-        // Set some local float variables equal to the value of our Horizontal and Vertical Inputs
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
+        #region Old code
         // Create a Vector3 variable, and assign X and Z to feature our horizontal and vertical float variables above
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector3 movement = VirtualJoystick.Instance.InputDirection;
 
         // Add a physical force to our Player rigidbody using our 'movement' Vector3 above, 
         // multiplying it by 'speed' - our public player speed that appears in the inspector
         rb.AddForce(movement * speed * Time.deltaTime);
+        #endregion
     }
 
     // When this game object intersects a collider with 'is trigger' checked, 
